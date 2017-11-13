@@ -9,3 +9,5 @@ Using:
 
 Install:
 npm install
+
+demo: https://fat-chat-app.herokuapp.com/
