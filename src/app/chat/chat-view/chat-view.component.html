@@ -1,0 +1,64 @@
+<div class="container">
+
+  <div class="panel-heading top-bar">
+    <div class="col-xs-12 col-md-12">
+      <h3 class="panel-title">
+         Simple <i class="fa fa-commenting-o fa-3x" aria-hidden="true"></i> chat</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 col-sm-3 col-md-3 userListWrapper">
+      <h5>Users online:</h5>
+      <ul id="userListUl" *ngFor="let item of userList">
+        <li id="userList">
+          <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;{{item.username}}</li>
+      </ul>
+    </div>
+    <div id="box" class="col-xs-10 col-sm-9 col-md-9">
+
+      <div class="col-xs-12 col-md-12">
+        <div class="panel panel-default">
+
+          <div *ngFor="let item of messages" class="row msg_container base_receive">
+            <div class="col-md-2 col-xs-2 avatar">
+              <img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">
+              <p id="usernameText">{{item.username}}</p>
+            </div>
+            <div class="col-md-10 col-xs-10">
+              <div class="messages msg_receive">
+                {{item.text}}
+                <p>
+                  <i class="fa fa-clock-o" aria-hidden="true"></i> •
+                  <span id="dateText">{{item.date}}</span>
+                </p>
+              </div>
+            </div>
+            <p *ngIf="typingMessage && username">{{typingMessage}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p *ngIf="message" class="text-center errorMsg">{{message}}t</p>
+  <div class="row">
+      <div class="col-sm-3 col-md-3"></div>
+      <div id="inputWrapper" class="col-sm-9 col-md-9">
+
+      <form #registerForm="ngForm" (ngSubmit)="handleRegister(registerForm.value)">
+        <div class="input-group">
+          <input type="text" 
+                  name="username" 
+                  ngModel class="form-control"
+                  placeholder="Enter a username..."
+                  autofocus 
+                  required>
+          <input type="submit" 
+                 class="btn btn-default"
+                 value="Join chat">
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+
